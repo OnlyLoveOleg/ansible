@@ -1,0 +1,5 @@
+[can-east-1a-prod-app]
+node01.can-east-1a.example.com
+
+[can-east-1a:children]
+can-east-1a-prod-app
