@@ -39,8 +39,8 @@ if [ "$UNAME" = "Linux" ] ; then
 fi
 
 
-# Test for Red Hat OS
-grep redhat /etc/os-release > /dev/null
+# Test for RedHat or CentOS
+grep 'ID="centos"' /etc/os-release > /dev/null || grep 'ID="rhel"' /etc/os-release > /dev/null
 
 if [ $? -eq 0 ]; then
   echo "Red Hat: Beginning installation"
@@ -60,9 +60,12 @@ if [ $? -eq 0 ]; then
   apt-get install -qy git build-essential python-setuptools python-dev || { echo 'Unable to finish installation of git build-essential python-setuptools python-dev' ; exit 1; }
 fi
 
+
 easy_install pip || { echo '"easy_install pip" exited with error' ; exit 1; }
 
+
 pip install paramiko PyYAML Jinja2 httplib2 simplejson six || { echo '"pip install paramiko PyYAML Jinja2 httplib2 simplejson six" exited with error' ; exit 1; }
+
 
 cd /opt || { echo 'Unable to change directory to /opt' ; exit 1; }
 git clone https://github.com/ansible/ansible.git --recursive || { echo '"git clone https://github.com/ansible/ansible.git --recursive exited with error' ; exit 1; }
