@@ -10,6 +10,7 @@
 # Currently tested:
 #   - Ubuntu 14.04 x86_64
 #   - Red Hat 7.1 x86_64
+#   - CentOS Linux 7 (Core) x86_64
 #
 # We wrap this whole script in a function, so that we won't execute
 # until the entire script is downloaded.
