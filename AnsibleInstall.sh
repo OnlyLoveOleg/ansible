@@ -45,8 +45,8 @@ grep 'ID="centos"' /etc/os-release > /dev/null || grep 'ID="rhel"' /etc/os-relea
 
 if [ $? -eq 0 ]; then
   echo "Red Hat: Beginning installation"
-  yum --quiet --assumeyes update || { echo '"yum update" exited with error' ; exit 1; }
-  yum --quiet --assumeyes install git gcc python-setuptools python-devel || { echo 'Unable to finish installation of git gcc python-setuptools python-devel' ; exit 1; }
+  yum --assumeyes update || { echo '"yum update" exited with error' ; exit 1; }
+  yum --assumeyes install git gcc python-setuptools python-devel || { echo 'Unable to finish installation of git gcc python-setuptools python-devel' ; exit 1; }
 fi
 
 
@@ -58,7 +58,7 @@ if [ $? -eq 0 ]; then
 
   apt-get update --fix-missing || { echo '"apt-get update --fix-missing" exited with error' ; exit 1; }
 
-  apt-get install -qy git build-essential python-setuptools python-dev || { echo 'Unable to finish installation of git build-essential python-setuptools python-dev' ; exit 1; }
+  apt-get install -y git build-essential python-setuptools python-dev || { echo 'Unable to finish installation of git build-essential python-setuptools python-dev' ; exit 1; }
 fi
 
 
