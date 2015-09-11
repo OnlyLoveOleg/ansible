@@ -5,12 +5,24 @@
 # Are you looking at this in your web browser, and would like to install Ansible?
 # Just open up your terminal and type:
 #
+#
 #   curl https://raw.githubusercontent.com/TalLannder/ansible/master/AnsibleInstall.sh | sh
+#
+#
+# The script will install the required packages and will clone Ansible into
+# /opt/ansible from the official repo (github.com/ansible) after the installation
+# is done run:
+#   source /opt/ansible/hacking/env-setup
+#
+# Tip: You can add this command to your ~/.bash_profile so you don't need to run it
+#      everytime you login.
+#
 #
 # Currently tested (Support only x86_64):
 #   - Ubuntu       14.04
 #   - Red Hat      7.1
 #   - CentOS Linux 7
+#
 #
 # We wrap this whole script in a function, so that we won't execute
 # until the entire script is downloaded.
