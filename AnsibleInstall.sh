@@ -5,18 +5,17 @@
 # Are you looking at this in your web browser, and would like to install Ansible?
 # Just open up your terminal and type:
 #
-#    curl https://raw.githubusercontent.com/TalLannder/ansible/master/AnsibleInstall.sh | sh
+#   curl https://raw.githubusercontent.com/TalLannder/ansible/master/AnsibleInstall.sh | sh
 #
-# Currently tested:
-#   - Ubuntu 14.04 x86_64
-#   - Red Hat 7.1 x86_64
-#   - CentOS Linux 7 (Core) x86_64
+# Currently tested (Support only x86_64):
+#   - Ubuntu       14.04
+#   - Red Hat      7.1
+#   - CentOS Linux 7
 #
 # We wrap this whole script in a function, so that we won't execute
 # until the entire script is downloaded.
 # That's good because it prevents our output overlapping with curl's.
 # It also means that we can't run a partially downloaded script.
-# We don't indent because it would be really confusing with the heredocs.
 run_it () {
 
 # Display everything on stderr.
