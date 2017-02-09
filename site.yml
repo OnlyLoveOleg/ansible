@@ -1,32 +1,22 @@
 ---
-# Talk to all hosts just so we can learn about them(gather the fatcs)
+# Talk to all hosts just so we can learn about them (gather fatcs)
 # and create dynamic groups as needed to slice the environment.
 - hosts: all
   tasks:
-   - name: Group nodes by ansible_system
-     group_by: key={{ansible_system}}
+   - name: Group nodes by ansible_system (Linux, FreeBSD, Win32NT)
+     group_by: key={{ ansible_system }}
 
-   - name: Group nodes by distribution
-     group_by: key={{ansible_distribution}}
+   - name: Group nodes by ansible_os_family (Debian, RedHat, Suse etc)
+     group_by: key={{ ansible_os_family }}
 
-   - name: Group nodes by distribution and version
-     group_by: key="{{ansible_distribution}}-{{ansible_distribution_major_version}}"
+   - name: Group nodes by ansible_distribution (Ubuntu, CentOS, Fedora etc)
+     group_by: key={{ ansible_distribution }}
+
+   - name: Group nodes by ansible_distribution and ansible_distribution_major_version (Well guess :)
+     group_by: key="{{ ansible_distribution }}-{{ ansible_distribution_major_version }}"
 
 
-# In this play include roles that won't touch the remote system unless told so.
-# "told" == explicit variables need to be defined in group_vars or host_vars
-#           for the role to work.
-- hosts: Linux
+- hosts: loc-dev
   gather_facts: False
-  sudo: yes
   roles:
-   - Sudo
-   - NTP
-
-
-# Cluster spesific plays defined below this point.
-- hosts: "can-east-1a-prod-app"
-  gather_facts: False
-  sudo: yes
-  roles:
-   - MyAppRole
+   - apache-maven
