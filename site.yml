@@ -20,3 +20,4 @@
   gather_facts: False
   roles:
    - apache-maven
+   - go

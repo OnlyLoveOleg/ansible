@@ -1,3 +1,6 @@
 [submodule "roles/apache-maven"]
 	path = roles/apache-maven
 	url = https://github.com/TalLannder/ansible-role-apache-maven.git
+[submodule "roles/go"]
+	path = roles/go
+	url = https://github.com/TalLannder/ansible-role-go.git
